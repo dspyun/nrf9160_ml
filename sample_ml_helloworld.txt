@@ -1,0 +1,49 @@
+1. install python
+2. install west with cmd.exe
+   pip3 install -U west
+3. goto nrf sdk folder
+   cd v2.4.0/nrf
+4. edit west.yml
+   add name-allowlist:
+    "- tflite-micro"
+   save west.yml
+5. west update at v2.4.0/nrf
+maybe you can see the below message.
+  
+=== updating tflite-micro (modules/lib/tflite-micro):
+--- tflite-micro: initializing
+Initialized empty Git repository in D:/Project_nordic/sl815/v2.4.0/modules/lib/tflite-micro/.git/
+--- tflite-micro: fetching, need revision 9156d050927012da87079064db59d07f03b8baf6
+remote: Enumerating objects: 20463, done.
+remote: Counting objects: 100% (51/51), done.
+remote: Compressing objects: 100% (39/39), done.
+remote: Total 20463 (delta 15), reused 40 (delta 10), pack-reused 20412
+Receiving objects: 100% (20463/20463), 32.40 MiB | 13.27 MiB/s, done.
+Resolving deltas: 100% (14604/14604), done.
+From https://github.com/zephyrproject-rtos/tflite-micro
+ * [new branch]        main             -> refs/west/main
+ * [new branch]        zephyr           -> refs/west/zephyr
+ * [new tag]           zephyr_202108023 -> zephyr_202108023
+ * [new tag]           zephyr_20230809  -> zephyr_20230809
+ * [new tag]           zephyr_20240627  -> zephyr_20240627
+
+6. open the example folder with vscode
+   example folder : v2.4.0\zephyr\samples\modules\tflite-micro\hello_world
+7. add build configuration with vscode
+8. after build ok. you can see the merge.hex in build/zephyr folder
+9. download merge.hex to target board with jlink
+10 connect target board and your pc with tera_term
+11. you can see the below message in tera term
+
+*** Booting Zephyr OS build v3.3.99-ncs1 ***
+x_value: 1.0*2^-127, y_value: 1.0*2^-127
+x_value: 1.2566366*2^-2, y_value: 1.4910772*2^-2
+x_value: 1.2566366*2^-1, y_value: 1.1183078*2^-1
+x_value: 1.8849551*2^-1, y_value: 1.677462*2^-1
+x_value: 1.2566366*2^0, y_value: 1.9316229*2^-1
+x_value: 1.5707957*2^0, y_value: 1.0420598*2^0
+x_value: 1.8849551*2^0, y_value: 1.9146791*2^-1
+x_value: 1.0995567*2^1, y_value: 1.6435742*2^-1
+x_value: 1.2566366*2^1, y_value: 1.0674761*2^-1
+x_value: 1.4137159*2^1, y_value: 1.8977352*2^-3
+   
