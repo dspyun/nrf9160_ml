@@ -18,3 +18,33 @@ train_magic_wand_model.ipynb를 참조한다
    이것을 magic_wand_model_data.cpp에 copy한 후
    단말기 hex파일을 만든다
 
+hex를 다운로드 후, 발생하는 문제점 대응
+다운로드 후, teraterm에 아래와 같은 error message가 올라올 수 있다
+Didn't find op for builtin opcode 'RESHAPE' version '1'
+
+이 경우, main_function.cpp > setup()에서
+	micro_op_resolver.AddReshape();를 추가해주고
+   < 5 > micro_op_resolver 를 < 6 > micro_op_resolver로 변경하여
+rebuild를 해서 hex 파일을 재생성하여 다운로드 해본다
+
+센서설정
+위의 절차를 거치면서 lis2dw12 accelerometer의 설정은 전혀 하지 않았다
+odr이나 sampling frequency는 재설정하지 않고 default값으로 사용했다
+
+샘플링주기와 샘플데이터 보정
+링패턴만 샘플링 후 update하였다
+ReadAccelerometer에서 sensor_channel_get을 사용하여 샘플링할 때,
+K_MSEC(20)을 사용하여 한 번 샘플링할 때마다 20msec의 delay를 주었다
+샘플링된 가속도값은 값이 너무 작았기 때문에
+100을 곱하여 보정한 데이터로 사용하였다
+
+
+샘플링이 일관성있게 되고 있는지를 모니터링 하기 위해서
+한 주기 샘플링이 된 후, 샘플링 된 값을 teraterm에 간단한 graph로 보여주게 했다
+graph 패턴이 이상해지면 샘플링 액션을 적절히 조절하여 이상한 형태의 샘플링이 되지 않도록 했다
+graph 기능은 graph.cpp를 참조하자
+
+기타
+그 외, sample code에서 변경된 코드는 첨부된 파일을 참조하라
+
+
