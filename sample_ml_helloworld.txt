@@ -1,4 +1,4 @@
-1. install python
+1. python을 install한다
 2. install west with cmd.exe
    pip3 install -U west
 3. goto nrf sdk folder
@@ -7,8 +7,10 @@
    add name-allowlist:
     "- tflite-micro"
    save west.yml
-5. west update at v2.4.0/nrf
-maybe you can see the below message.
+5. 아래 명령어를 실행한다
+   west update at v2.4.0/nrf
+   그러면 아래 메시지를 볼 수 있다.
+   sdk/module/lib/tflite-micro 폴더가 생성되면서 tensorflow 라이브러리가 다운로드 되는 과정이다
   
 === updating tflite-micro (modules/lib/tflite-micro):
 --- tflite-micro: initializing
@@ -32,8 +34,10 @@ From https://github.com/zephyrproject-rtos/tflite-micro
 7. add build configuration with vscode
 8. after build ok. you can see the merge.hex in build/zephyr folder
 9. download merge.hex to target board with jlink
-10 connect target board and your pc with tera_term
-11. you can see the below message in tera term
+   merge.hex를 타겟보드로 다운로드한다
+10 타겟과 PC를 테라텀으로 연결한다
+11. 테라텀에서 아래의 메시지를 볼 수 있다
+   메시지가 나온다는 것은 tensorflow lite lib가 정상적으로 동작한다는 것이다
 
 *** Booting Zephyr OS build v3.3.99-ncs1 ***
 x_value: 1.0*2^-127, y_value: 1.0*2^-127
