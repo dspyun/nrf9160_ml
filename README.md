@@ -17,6 +17,7 @@ gesture_predictor.cpp
   2. 모델 개량을 하든지
   3. thresholder값 0.8f를 낮추어서 0.6f, 0.7f로 바꾸든지
      또는 histroylength 5를 적절히 조절하여 3 정도로 바꾸든지
+
   
 
   
